@@ -1,0 +1,16 @@
+PODS:
+  - DDKeyPathChannel (0.0.1)
+
+DEPENDENCIES:
+  - DDKeyPathChannel (from `../`)
+
+EXTERNAL SOURCES:
+  DDKeyPathChannel:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DDKeyPathChannel: d984f608ef203660d84092823b290627f394e16c
+
+PODFILE CHECKSUM: 4e797b7d76af937b1fe2ae28630d9447e4954d7e
+
+COCOAPODS: 1.2.0
