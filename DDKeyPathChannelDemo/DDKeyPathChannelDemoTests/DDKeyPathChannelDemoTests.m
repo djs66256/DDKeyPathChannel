@@ -7,9 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <DDKeyPathChannel/NSObject+DDKeyPathChannelBind.h>
-#import <DDKeyPathChannel/NSObject+DDKeyPathChannelProxy.h>
-#import <DDKeyPathChannel/DDKeyPathChannelManager.h>
+#import <DDKeyPathChannel/DDKeyPathChannel.h>
 
 typedef NS_ENUM(NSInteger, ChannelType) {
     ChannelTypeUser = 1

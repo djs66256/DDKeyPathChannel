@@ -1,5 +1,5 @@
 PODS:
-  - DDKeyPathChannel (0.0.1)
+  - DDKeyPathChannel (0.0.2)
 
 DEPENDENCIES:
   - DDKeyPathChannel (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DDKeyPathChannel: d984f608ef203660d84092823b290627f394e16c
+  DDKeyPathChannel: 92da06ca26b0872613a5d5cc75863b795091b35e
 
 PODFILE CHECKSUM: f39280334283b2713bd0df3b680d1299c05e8cc5
 
