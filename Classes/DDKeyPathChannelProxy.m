@@ -82,24 +82,12 @@
     }
 }
 
-//- (BOOL)canPerformKeyPath:(NSString *)keyPath newKeyPath:(out NSString **)aKeyPath {
-//    if ([self channelType] <= 0) {
-//        return NO;
-//    }
-//    if (![self canPerformKeyPath:keyPath]) {
-//        return NO;
-//    }
-//    NSAssert(keyPath.length > 0, @"[DDKeyPathChannel] KeyPath Must Be NOT Nil!");
-//    NSString *transKeyPath = [self translateKeyPath:keyPath];
-//    if (transKeyPath) {
-//        NSString *selectorStr = [NSString stringWithFormat:@"set%@%@:", [keyPath substringToIndex:1].uppercaseString, [transKeyPath substringFromIndex:1]];
-//        if ([self respondsToSelector:NSSelectorFromString(selectorStr)]) {
-//            if (aKeyPath) *aKeyPath = transKeyPath;
-//            return YES;
-//        }
-//    }
-//    return NO;
-//}
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    if (aSelector == @selector(translateKeyPath:)) {
+        return YES;
+    }
+    return [super respondsToSelector:aSelector];
+}
 
 - (void)setValue:(id)value forKey:(NSString *)key {
     if (self.valueWillChangeBlock) self.valueWillChangeBlock(self.target, key, value);

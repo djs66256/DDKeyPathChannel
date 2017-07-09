@@ -76,7 +76,7 @@
             if (transKeyPath) {
                 if (transKeyPath.length > 0) {
                     selectorStr = [NSString stringWithFormat:@"set%@%@:", [keyPath substringToIndex:1].uppercaseString, [transKeyPath substringFromIndex:1]];
-                    if ([self respondsToSelector:NSSelectorFromString(selectorStr)]) {
+                    if ([object respondsToSelector:NSSelectorFromString(selectorStr)]) {
                         if (aKeyPath) *aKeyPath = transKeyPath;
                         return YES;
                     }
