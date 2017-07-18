@@ -40,7 +40,7 @@
 {
     self = [super init];
     if (self) {
-        _hashTable = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsWeakMemory capacity:0];
+        _hashTable = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsWeakMemory|NSPointerFunctionsObjectPointerPersonality capacity:0];
         _lock = [[NSLock alloc] init];
     }
     return self;
