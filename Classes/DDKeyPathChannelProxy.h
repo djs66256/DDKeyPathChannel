@@ -32,6 +32,8 @@
 
 - (instancetype)initWithChannelType:(NSInteger)channelType channelId:(NSString *)channelId target:(NSObject *)target;
 
+- (BOOL)isEqual:(id)object;
+
 @end
 
 @interface DDKeyPathChannelProxy : DDKeyPathChannelBaseProxy

@@ -54,6 +54,23 @@
     return [self.target methodSignatureForSelector:sel];
 }
 
+- (BOOL)isEqualToChannelProxy:(DDKeyPathChannelBaseProxy *)proxy {
+    return self.channelType == proxy.channelType && [self.channelId isEqualToString:proxy.channelId];
+}
+
+- (BOOL)isEqual:(id)other {
+    __strong id object = other;
+    if (object == self) {
+        return YES;
+    }
+    else if (![object isKindOfClass:[DDKeyPathChannelBaseProxy class]]) {
+        return NO;
+    }
+    else {
+        return [self isEqualToChannelProxy:object];
+    }
+}
+
 @end
 
 @implementation DDKeyPathChannelProxy
