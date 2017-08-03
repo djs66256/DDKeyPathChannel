@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DDKeyPathChannel"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "Synchronize data between different object of different class by keyPath."
 
   # This description is used to generate tags and improve search results.
