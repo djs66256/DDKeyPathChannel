@@ -114,5 +114,53 @@ typedef NS_ENUM(NSInteger, ChannelType) {
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 
+- (void)testMultiThread {
+    NSMutableArray *exposeBag = [NSMutableArray new];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    queue.maxConcurrentOperationCount = 5;
+    
+    dispatch_group_t group = dispatch_group_create();
+    
+    XCTestExpectation *expect = [self expectationWithDescription:@"channel"];
+    
+    const NSInteger count = 10000;
+    for (int i = 0; i < count; i++) {
+        dispatch_group_enter(group);
+        [queue addOperationWithBlock:^{
+            dispatch_group_leave(group);
+            UserModel1 *obj = ({
+                UserModel1 *obj = [UserModel1 new];
+                obj.id = [@(i) stringValue];
+                obj.name = @"Nike";
+                obj.age = 21;
+                obj;
+            });
+            [obj addChannelProxyWithChannelType:ChannelTypeUser channelId:obj.id config:^(DDKeyPathChannelProxy *proxy) {
+                
+            }];
+            [exposeBag addObject:obj];
+            
+            dispatch_group_enter(group);
+            [queue addOperationWithBlock:^{
+                dispatch_group_leave(group);
+                [[DDKeyPathChannelManager sharedChannel] emitChannelType:ChannelTypeUser channelId:[@(i) stringValue] value:@(10) forKeyPath:@"age"];
+            }];
+            
+            dispatch_group_enter(group);
+            [queue addOperationWithBlock:^{
+                dispatch_group_leave(group);
+                [obj removeChannelProxyByChannelType:ChannelTypeUser];
+            }];
+        }];
+    }
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [expect fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * _Nullable error) {
+        [queue cancelAllOperations];
+        XCTAssert(error == nil);
+    }];
+}
 
 @end
