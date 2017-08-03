@@ -91,7 +91,9 @@
 - (void)emitChannelType:(NSInteger)channelType channelId:(NSString *)channelId value:(id)value forKeyPath:(NSString *)keyPath {
     if (channelType == self.channelType) {
         [self.lock lock];
-        for (id<DDKeyPathChannelProtocol> obj in _hashTable) {
+        NSArray<id<DDKeyPathChannelProtocol>> *allObjects = _hashTable.allObjects;
+        [self.lock unlock];
+        for (id<DDKeyPathChannelProtocol> obj in allObjects) {
             NSString *aKeyPath = nil;
             if ([obj.channelId isEqualToString:channelId] && [self object:obj canPerformKeyPath:keyPath newKeyPath:&aKeyPath]) {
                 dispatch_block_t updateValue =^() {
@@ -111,7 +113,6 @@
                 }
             }
         }
-        [self.lock unlock];
     }
 }
 
