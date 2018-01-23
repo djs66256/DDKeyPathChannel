@@ -3,7 +3,7 @@ Synchronize data between different object of different class by keyPath.
 
 ## 中文介绍
 
-[DDSkin做更好的换肤框架](http://djs66256.github.io/2017/06/19/2017-06-19-DDSkin%E5%81%9A%E6%9B%B4%E5%A5%BD%E7%9A%84%E6%8D%A2%E8%82%A4%E6%A1%86%E6%9E%B6/)
+[全局数据同步](http://djs66256.github.io/2017/04/02/2017-04-09-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88%E4%B8%80/)
 
 # Requirements
 
